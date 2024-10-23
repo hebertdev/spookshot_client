@@ -3,6 +3,7 @@
 import { Avatar, Button } from "@mantine/core";
 import { showNotification } from "components/Notifications";
 import { Post } from "components/Post";
+import { useUserContext } from "hooks/useUserContext";
 import { CommentData, PostData } from "interfaces/posts";
 import { useState, useEffect, FormEvent } from "react";
 import { addCommentPostAPI } from "services/posts";
@@ -12,6 +13,7 @@ interface ContainerPostProps {
 }
 
 export function ContainerPost({ post }: ContainerPostProps) {
+  const { user } = useUserContext();
   const [isLoaded, setIsLoaded] = useState(false);
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,6 +25,14 @@ export function ContainerPost({ post }: ContainerPostProps) {
   const handleAddComment = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (loading) return;
+    if (!user) {
+      showNotification({
+        title: "Error",
+        message: "Please login to add a comment",
+        color: "red",
+      });
+      return;
+    }
     try {
       setLoading(true);
       const data = await addCommentPostAPI(post.id, comment);
@@ -36,7 +46,19 @@ export function ContainerPost({ post }: ContainerPostProps) {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error);
+      if (!user) {
+        showNotification({
+          title: "Error",
+          message: "Please login to add a comment",
+          color: "red",
+        });
+      } else {
+        showNotification({
+          title: "Error",
+          message: "Something went wrong",
+          color: "red",
+        });
+      }
     }
   };
 
@@ -49,7 +71,7 @@ export function ContainerPost({ post }: ContainerPostProps) {
             onSubmit={handleAddComment}
             className="w-full   rounded-lg p-4 flex items-center space-x-4  border-b border-gray-300 dark:border-[var(--mantine-color-dark-4)]"
           >
-            <Avatar src={post.user?.profile.avatar} />
+            <Avatar src={user?.profile.avatar} />
             <input
               type="text"
               className="flex-grow bg-transparent text-black dark:text-gray-100 placeholder-gray-400 focus:outline-none"

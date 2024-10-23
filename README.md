@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Here’s a polished version of your `README.md` for SpookShot Social:
 
-## Getting Started
+---
 
-First, run the development server:
+![SpookShot AI](https://raw.githubusercontent.com/hebertdev/hebertdev/refs/heads/master/img/909shots_so.webp)
+
+# 🎃 SpookShot Social
+
+## La mejor experiencia para crear imágenes con temática de Halloween
+
+[¡Visita nuestra Web App!](https://spookshot.hebertdev.net/)
+
+SpookShot es la aplicación perfecta para Halloween, con filtros y efectos espeluznantes que transforman tus fotos en verdaderas obras maestras aterradoras. ¡Diviértete creando y compartiendo momentos únicos con amigos y familiares!
+
+### ⚡️ Gratuita y de código abierto
+
+Esta aplicación es completamente gratuita y su código fuente está disponible en GitHub.
+
+### 🔒 Enfoque en la privacidad
+
+No realizamos seguimiento de los usuarios.
+
+### ✨ La mejor experiencia
+
+Desarrollada con amor y cuidado para ofrecerte la mejor experiencia posible.
+
+## 🗣️ ¡Danos tu opinión!
+
+Si tienes sugerencias de funciones o quieres reportar algún error, contáctanos en [instagram](https://instagram.com/hebertdev1).
+
+## 💻 Contribuciones
+
+Esta es una aplicación de Next.js y TypeScript. Para ejecutar el proyecto, clónalo y ejecuta los siguientes comandos:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+¡Y estarás listo para empezar a contribuir!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Una pequeña parte del proyecto está construida en Django: [SpookShot API](https://github.com/hebertdev/spookshot_api).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎉 Agradecimientos
 
-## Learn More
+- [MANTINEUI](https://mantine.dev/) - Una biblioteca de componentes React completamente equipada.
+- Gracias a Cloudinary y Midudev por la hackathon, ya que este proyecto es el resultado de su apoyo.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feel free to customize any part further!

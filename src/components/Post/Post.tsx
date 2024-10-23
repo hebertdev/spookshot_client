@@ -22,12 +22,15 @@ import { ShareButton } from "./ShareButton";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { showNotification } from "components/Notifications";
+import { useUserContext } from "hooks/useUserContext";
 dayjs.extend(relativeTime);
 interface PostProps {
   post: PostData;
 }
 
 export function Post({ post }: PostProps) {
+  const { user } = useUserContext();
   const { colorScheme } = useMantineColorScheme();
   const [isLiked, setIsLiked] = useState(post.is_like);
   const [loading, setLoading] = useState(false);
@@ -36,6 +39,14 @@ export function Post({ post }: PostProps) {
 
   const handleAddLike = async () => {
     if (loading) return;
+    if (!user) {
+      showNotification({
+        title: "Error",
+        message: "Please login to like this post",
+        color: "red",
+      });
+      return;
+    }
     try {
       setLoading(true);
       await addLikePostAPI(post.id);
@@ -43,13 +54,25 @@ export function Post({ post }: PostProps) {
       setTotalLikes(totalLikes + 1);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      showNotification({
+        title: "Error",
+        message: "Something went wrong",
+        color: "red",
+      });
       setLoading(false);
     }
   };
 
   const handleRemoveLike = async () => {
     if (loading) return;
+    if (!user) {
+      showNotification({
+        title: "Error",
+        message: "Please login to like this post",
+        color: "red",
+      });
+      return;
+    }
     try {
       setLoading(true);
       await removeLikePostAPI(post.id);
@@ -57,7 +80,11 @@ export function Post({ post }: PostProps) {
       setIsLiked(false);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      showNotification({
+        title: "Error",
+        message: "Something went wrong",
+        color: "red",
+      });
       setLoading(false);
     }
   };
@@ -257,7 +284,7 @@ export function ImageGallery({ post }: ImageGalleryProps) {
 
       {lightboxOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[1000]"
           // Cerrar al hacer clic en el fondo
         >
           <button
