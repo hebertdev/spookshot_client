@@ -51,7 +51,7 @@ export function Posts({ posts }: PostsProps) {
           )}
           {newPosts.length === 0 && (
             <div className="w-full h-full flex justify-center items-center p-10">
-              <p>They haven't posted anything yet.</p>
+              <p>{"They haven't posted anything yet."}</p>
             </div>
           )}
         </>

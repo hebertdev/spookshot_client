@@ -34,9 +34,7 @@ export function LoginForm() {
 
     validate: {
       password: (val) =>
-        val.length < 8
-          ? "Password must include at least 8 characters."
-          : null,
+        val.length < 8 ? "Password must include at least 8 characters." : null,
     },
   });
 
@@ -59,7 +57,7 @@ export function LoginForm() {
               message: `Hello, ${data.user.first_name}! We're glad to have you here.`,
               color: "green",
             });
-            setToken(data.access_token)
+            setToken(data.access_token);
             window.location.href = "/";
           } catch (error: any) {
             form.reset();
@@ -110,7 +108,7 @@ export function LoginForm() {
             type="button"
             size="xs"
           >
-            Don't have an account? Sign up
+            {"Don't have an account? Sign up"}
           </Anchor>
           <Button type="submit" radius="xl" loading={loading}>
             Log In
