@@ -1,0 +1,14 @@
+.header {
+  background: light-dark(var(--mantine-default-bg), var(--mantine-default-bg));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: rem(1px) solid
+    light-dark(var(--mantine-color-gray-1), transparent);
+}
+.header_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}

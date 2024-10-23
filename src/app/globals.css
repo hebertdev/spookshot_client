@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "Creepster";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/Creepster-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Spirax";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/Spirax-Regular.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.estorbo {
+  height: 60px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: light-dark(var(--mantine-font-family), "Creepster");
+  letter-spacing: light-dark(var(--mantine-letter-spacing), 0.1em);
+}
+
+/* p {
+  font-family: light-dark(var(--mantine-font-family), "Spirax");
+} */
+
+button {
+  font-family: light-dark(var(--mantine-font-family), "Creepster");
+  letter-spacing: light-dark(var(--mantine-letter-spacing), 0.1em);
+  font-weight: light-dark(var(--mantine-font-weight), 200 !important);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
