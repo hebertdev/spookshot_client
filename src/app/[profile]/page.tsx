@@ -47,7 +47,7 @@ export default async function ProfileDetails({ params }: ProfileDetailsProps) {
                 <ActionButtons profile={data} />
               </div>
             </div>
-            <Posts posts={data.posts} />
+            <Posts posts={data.posts} username={profile.substring(3)} />
           </Box>
         </Container>
       </>

@@ -15,6 +15,7 @@ import classes from "./Navbar.module.css";
 import { MenuOptions } from "./MenuOptions";
 import { useUserContext } from "hooks/useUserContext";
 import { useEffect } from "react";
+import { axiosInterceptors } from "helpers/axios";
 
 interface NavbarLinkProps {
   icon: typeof IconHome2;
@@ -39,6 +40,7 @@ function NavbarLink({ icon: Icon, label, active, url }: NavbarLinkProps) {
 }
 
 export function Navbar() {
+  axiosInterceptors();
   const { handleGetUser, user } = useUserContext();
   const mockdata = [
     { icon: IconHome2, label: "Feed", url: "/" },

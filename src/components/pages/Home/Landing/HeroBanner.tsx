@@ -97,12 +97,6 @@ export function HeroBanner() {
         </div>
       </section>
       <br />
-      <Center mt={"xl"} mb={"xl"}>
-        <p>
-          This project is open-source and available on GitHub. It was created
-          for the Midudev and Cloudinary hackathon.
-        </p>
-      </Center>
     </Container>
   );
 }
