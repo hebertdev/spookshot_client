@@ -1,6 +1,14 @@
 "use client";
 
-import { Container, Button } from "@mantine/core";
+import { Container, Button, Center } from "@mantine/core";
+import {
+  IconGhost,
+  IconImageInPicture,
+  IconLayersDifference,
+  IconLighter,
+  IconVideo,
+  IconWand,
+} from "@tabler/icons-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -51,6 +59,66 @@ export function HeroBanner() {
           </div>
         </div>
       </main>
+      <section className="mt-24">
+        <h3 className="text-4xl font-bold mb-8 text-center">
+          Terrifying Features
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <FeatureCard
+            icon={<IconGhost />}
+            title="Scary Filters"
+            description="Apply bone-chilling filters to your photos"
+          />
+          <FeatureCard
+            icon={<IconVideo />}
+            title="Screamer Generator"
+            description="Create jump-scare videos to terrify your friends"
+          />
+          <FeatureCard
+            icon={<IconWand />}
+            title="AI Image Regeneration"
+            description="Transform ordinary photos into nightmarish scenes"
+          />
+          <FeatureCard
+            icon={<IconImageInPicture />}
+            title="Background Replacement"
+            description="Switch your backdrop to eerie locations"
+          />
+          <FeatureCard
+            icon={<IconLayersDifference />}
+            title="Image Optimization"
+            description="Enhance your spooky shots for maximum impact"
+          />
+          <FeatureCard
+            icon={<IconLighter />}
+            title="Quick Effects"
+            description="Instantly add horror elements to your pictures"
+          />
+        </div>
+      </section>
+      <br />
+      <Center mt={"xl"} mb={"xl"}>
+        <p>
+          This project is open-source and available on GitHub. It was created
+          for the Midudev and Cloudinary hackathon.
+        </p>
+      </Center>
     </Container>
+  );
+}
+
+interface FeatureCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+function FeatureCard({ icon, title, description }: FeatureCardProps) {
+  return (
+    <div className="bg-[#150618] p-6 rounded-lg shadow-lg ">
+      <div className="text-orange-500 mb-4">{icon}</div>
+      <h4 className="text-orange-500 text-xl font-bold mb-2">{title}</h4>
+      <p className="text-orange-300">{description}</p>
+    </div>
   );
 }

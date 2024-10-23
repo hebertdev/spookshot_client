@@ -52,7 +52,7 @@ export function Header() {
             <DarkModeButton />
             <Link href={"/account/login"}>
               <Button radius={"xl"} variant="outline">
-                Iniciar sesión
+                Log in
               </Button>
             </Link>
           </Box>

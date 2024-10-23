@@ -163,23 +163,7 @@ export function Editor({ fileId }: EditorProps) {
             >
               Generative AI
             </Accordion.Control>
-            <Accordion.Panel>Content</Accordion.Panel>
-          </Accordion.Item>
-          <Accordion.Item value="watemark">
-            <Accordion.Control
-              disabled={disabledAccordion}
-              icon={
-                <IconBoxPadding
-                  style={{
-                    width: rem(20),
-                    height: rem(20),
-                  }}
-                />
-              }
-            >
-              Watemark
-            </Accordion.Control>
-            <Accordion.Panel>Content</Accordion.Panel>
+            <Accordion.Panel>En construcción</Accordion.Panel>
           </Accordion.Item>
         </Accordion>
       </div>

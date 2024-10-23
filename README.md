@@ -1,10 +1,6 @@
-Here’s a polished version of your `README.md` for SpookShot Social:
+![SpookShot AI](https://raw.githubusercontent.com/hebertdev/hebertdev/refs/heads/master/img/spookshot_banner.webp)
 
----
-
-![SpookShot AI](https://raw.githubusercontent.com/hebertdev/hebertdev/refs/heads/master/img/909shots_so.webp)
-
-# 🎃 SpookShot Social
+# 🎃 SpookShot Social + [SpookShot API](https://github.com/hebertdev/spookshot_api) 🎃
 
 ## La mejor experiencia para crear imágenes con temática de Halloween
 
@@ -46,7 +42,3 @@ Una pequeña parte del proyecto está construida en Django: [SpookShot API](http
 
 - [MANTINEUI](https://mantine.dev/) - Una biblioteca de componentes React completamente equipada.
 - Gracias a Cloudinary y Midudev por la hackathon, ya que este proyecto es el resultado de su apoyo.
-
----
-
-Feel free to customize any part further!

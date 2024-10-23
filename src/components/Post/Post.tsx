@@ -167,11 +167,13 @@ interface ImageGalleryProps {
 export function ImageGallery({ post }: ImageGalleryProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVideoReady, setIsVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
     setLightboxOpen(true);
+    setIsVideoReady(false); // Resetea el estado al abrir el lightbox
   };
 
   const closeLightbox = () => {
@@ -193,6 +195,10 @@ export function ImageGallery({ post }: ImageGalleryProps) {
     );
   };
 
+  const handleVideoLoad = () => {
+    setIsVideoReady(true); // Cambia el estado cuando el video está listo
+  };
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (lightboxOpen) {
@@ -202,7 +208,6 @@ export function ImageGallery({ post }: ImageGalleryProps) {
       }
     };
 
-    // Agregar o quitar la clase para deshabilitar el scroll
     if (lightboxOpen) {
       document.body.classList.add("no-scroll");
     } else {
@@ -212,7 +217,7 @@ export function ImageGallery({ post }: ImageGalleryProps) {
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.classList.remove("no-scroll"); // Asegurarse de quitar la clase al desmontar
+      document.body.classList.remove("no-scroll");
     };
   }, [lightboxOpen]);
 
@@ -242,17 +247,7 @@ export function ImageGallery({ post }: ImageGalleryProps) {
                     maxWidth: "100%",
                     maxHeight: "100%",
                     minHeight: "200px",
-                    backgroundImage: `
-                    linear-gradient(45deg, #ccc 25%, transparent 25%),
-                    linear-gradient(-45deg, #ccc 25%, transparent 25%),
-                    linear-gradient(45deg, transparent 75%, #ccc 75%),
-                    linear-gradient(-45deg, transparent 75%, #ccc 75%)
-                  `,
-                    backgroundSize: "10px 10px",
-                    backgroundPosition: "0 0, 0 5px, 5px -5px, -5px 0px",
                     borderRadius: "20px",
-                    overflow: "hidden",
-                    cursor: "pointer",
                   }}
                 />
               ) : (
@@ -283,10 +278,7 @@ export function ImageGallery({ post }: ImageGalleryProps) {
       </div>
 
       {lightboxOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[1000]"
-          // Cerrar al hacer clic en el fondo
-        >
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[1000]">
           <button
             className="absolute top-4 right-4 text-white hover:text-gray-300"
             onClick={closeLightbox}
@@ -312,23 +304,12 @@ export function ImageGallery({ post }: ImageGalleryProps) {
           <div
             className="min-h-[95%] max-h-[95%] overflow-hidden flex items-center justify-center min-w-[95%] max-w-[95%] w-full h-full"
             onClick={closeLightbox}
-            // Evitar que el clic cierre el lightbox
           >
             {post.media[currentIndex].media_type === "image" ? (
               <img
                 onClick={(e) => e.stopPropagation()}
                 src={post.media[currentIndex].url_string}
                 className="max-w-[90%] max-h-[90%] min-h-[200px] rounded-[20px] overflow-hidden"
-                style={{
-                  backgroundImage: `
-                    linear-gradient(45deg, #ccc 25%, transparent 25%),
-                    linear-gradient(-45deg, #ccc 25%, transparent 25%),
-                    linear-gradient(45deg, transparent 75%, #ccc 75%),
-                    linear-gradient(-45deg, transparent 75%, #ccc 75%)
-                  `,
-                  backgroundSize: "10px 10px",
-                  backgroundPosition: "0 0, 0 5px, 5px -5px, -5px 0px",
-                }}
               />
             ) : (
               <video
@@ -336,8 +317,9 @@ export function ImageGallery({ post }: ImageGalleryProps) {
                 ref={videoRef}
                 src={post.media[currentIndex].url_string}
                 controls
-                autoPlay
+                autoPlay={isVideoReady} // Solo autoPlay si el video está listo
                 className="max-w-[90%] max-h-[90%] min-h-[200px] rounded-[20px] overflow-hidden"
+                onLoadedData={handleVideoLoad} // Maneja el evento de carga del video
               />
             )}
           </div>
